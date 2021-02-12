@@ -64,7 +64,7 @@ const state = {
 // CTA BUTTON COORD
 const ctaBtn = {
     x : 83 / 320 * canvas_w,
-    y : 208 / 480 * canvas_h,
+    y : (208 - 15) / 480 * canvas_h,
     w : 83 / 320 * canvas_w,
     h : 29 / 480 * canvas_h
 }
