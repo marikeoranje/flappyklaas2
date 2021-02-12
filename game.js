@@ -306,7 +306,7 @@ const pipes = {
             let bottomPipeYPos = p.y + this.h + this.gap;
             
             // COLLISION DETECTION
-            if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h || (bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w && bird.y + bird.radius > bottomPipeYPos && bird.y - bird.radius < bottomPipeYPos + this.h)){
+            if(bird.x + bird.radius > p.x + 20 && bird.x - bird.radius < p.x + this.w - 20 && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h || (bird.x + bird.radius > p.x + 20 && bird.x - bird.radius < p.x - 20 + this.w && bird.y + bird.radius > bottomPipeYPos && bird.y - bird.radius < bottomPipeYPos + this.h)){
                 state.current = state.over;
                 HIT.play();
             }
@@ -317,7 +317,7 @@ const pipes = {
             // if the pipes go beyond canvas, we delete them from the array
             if(p.x + this.w <= 0){
                 this.position.shift();
-                score.value += 1;
+                score.value += 0;
                 score.best = Math.max(score.value, score.best);
                 localStorage.setItem("best", score.best);
             }
