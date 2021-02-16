@@ -36,6 +36,17 @@ window.addEventListener('resize', function(){
 // GAME VARS AND CONSTS
 let frames = 0;
 const DEGREE = Math.PI/180;
+let previousTime = new Date();
+let deltaTime = 0;
+function poop(){
+    time = new Date();
+    deltaTime = (time - previousTime) / 1000;
+    previousTime = time;
+    update();
+    draw();
+    frames++;
+    requestAnimationFrame(poop);
+}
 
 // LOAD SOUNDS
 const SCORE_S = new Audio();
@@ -64,7 +75,7 @@ const state = {
 // CTA BUTTON COORD
 const ctaBtn = {
     x : 83 / 320 * canvas_w,
-    y : (208 - 15) / 480 * canvas_h,
+    y : (208-15) / 480 * canvas_h,
     w : 83 / 320 * canvas_w,
     h : 29 / 480 * canvas_h
 }
@@ -172,7 +183,7 @@ const bird = {
     
     gravity : 0.24,
     jump : 4,
-    speed : 0,
+    speed : deltaTime,
     rotation : 0,
     
     draw : function(){
@@ -433,12 +444,12 @@ function update(){
     food.update();
 }
 
+
 // LOOP
 function loop(){
     update();
     draw();
-    frames++;
-    
-    requestAnimationFrame(loop);
+    //frames++;
+    poop();
 }
 loop();
