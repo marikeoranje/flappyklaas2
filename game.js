@@ -162,7 +162,7 @@ const bird = {
         {sX: 278, sY : 153}
     ],
     x : 50,
-    y : 150 * deltaTime,
+    y : 150,
     w : 48,
     h : 32,
     
