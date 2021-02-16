@@ -36,17 +36,6 @@ window.addEventListener('resize', function(){
 // GAME VARS AND CONSTS
 let frames = 0;
 const DEGREE = Math.PI/180;
-let previousTime = new Date();
-let deltaTime = 0;
-function poop(){
-    time = new Date();
-    deltaTime = (time - previousTime) / 1000;
-    previousTime = time;
-    update();
-    draw();
-    frames++;
-    requestAnimationFrame(poop);
-}
 
 // LOAD SOUNDS
 const SCORE_S = new Audio();
@@ -183,7 +172,7 @@ const bird = {
     
     gravity : 0.24,
     jump : 4,
-    speed : deltaTime,
+    speed : 0,
     rotation : 0,
     
     draw : function(){
@@ -449,7 +438,7 @@ function update(){
 function loop(){
     update();
     draw();
-    //frames++;
-    poop();
+    frames++;
+    requestAnimationFrame(loop);
 }
 loop();
